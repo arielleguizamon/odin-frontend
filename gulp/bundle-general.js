@@ -7,11 +7,14 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('bundle-general', ['ng-config', 'ng-version', 'pdf-build'], function() {
+  var src = gulp.paths.src,
+      env = process.env.NODE_ENV || 'dev',
+      dest = (env === 'dev') ? gulp.paths.dev : gulp.paths.prod;
   return gulp.src([
-    'js/*.js',
-    'js/services/*.js',
-    'js/controllers/searchDatasetsController.js',
-    'js/directives/main/*.js',
+    src + '/js/*.js',
+    src + '/js/services/*.js',
+    src + '/js/controllers/searchDatasetsController.js',
+    src + '/js/directives/main/*.js',
   ])
     .pipe(plumber())
     .pipe(sourcemaps.init())
@@ -19,7 +22,7 @@ gulp.task('bundle-general', ['ng-config', 'ng-version', 'pdf-build'], function()
       .pipe(ngAnnotate({
         add: true
       }))
-      .pipe(uglify() )//: util.noop())
+      .pipe((env === 'dev') ? util.noop() : uglify() )//: util.noop())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest(dest));
 });

@@ -2,31 +2,31 @@
   "customdefaults": {
     "bodyColor": "",
     "containerColor": "",
-    "homepage":"",
+    "homepage":"#dcddde",
     "homeSectionTitleSocial": {
       "textColor": ""
     },
-    "hrHeader": "",
+    "hrHeader": "#02545e",
     "titleOdin": {
-      "text": "Buenos Aires Data",
+      "text": "UNLP Data",
       "color": ""
     },
     "descriptionOdin": {
-      "text": "Iniciativa de Datos Públicos y Transparencia de la Ciudad Autónoma de Buenos Aires.",
+      "text": "Portal de datos abiertos de la Universidad Nacional de La Plata.",
       "color": ""
     },
-    "logoOdin": "../images/BAlogoHeaderMobile.svg",
+    "logoOdin": "../images/logo-unlp.png",
     "completeCatalog": {
-      "backgroundColor": "",
-      "color": ""
+      "backgroundColor": "#02545e",
+      "color": "#ffffff"
     },
     "categoriesContainer": "",
     "homeSectionTitle": {
-      "textColor": "",
-      "iconColor": ""
+      "textColor": "#02545e",
+      "iconColor": "#02545e"
     },
     "homeSectionTitleSocial": {
-     "textColor": ""
+     "textColor": "#02545e"
     },
     "downloads": {
       "icon": "",
@@ -37,8 +37,8 @@
     },
     "datasets": {
       "container": {
-        "backgroundColor": "",
-        "color": ""
+        "backgroundColor": "#dcddde",
+        "color": "#02545e"
       },
       "home": {
         "backgroundColor": "",
@@ -51,7 +51,7 @@
     },
     "resources": {
       "backgroundColor": "",
-      "color": "",
+      "color": "#02545e",
       "filetypeColor": "",
       "viewResources": {
         "backgroundColor": "",
@@ -59,16 +59,16 @@
       }
     },
     "layoutButton": {
-      "backgroundColor": "",
+      "backgroundColor": "#e75295",
       "color": ""
     },
     "footerOdin": {
-      "backgroundColor": "",
-      "color": "",
-      "logo": "../images/ba-logo-01.svg"
+      "backgroundColor": "#02545e",
+      "color": "#ffffff",
+      "logo": "../images/logo-unlp.png"
     },
-    "viewMoreLink": "",
-    "searchbarText": "",
+    "viewMoreLink": "#02545e",
+    "searchbarText": "#02545e",
     "additionalInfo": {
       "backgroundColor": "",
       "color": ""
@@ -82,7 +82,7 @@
       }
     },
     "filters": {
-      "backgroundColor": "",
+      "backgroundColor": "#02545e",
       "color": ""
     },
     "tooltips": {

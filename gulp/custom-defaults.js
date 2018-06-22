@@ -1,5 +1,4 @@
 var gulp = require('gulp'),
-    fs = require('fs'),
     rename = require('gulp-rename'),
     ngConfig = require('gulp-ng-config');
 
@@ -8,5 +7,5 @@ gulp.task('custom-defaults', function() {
   return gulp.src(customFile)
     .pipe(ngConfig('odin.customdefaults'))
     .pipe(rename('customdefaults.js'))
-    .pipe(gulp.dest('js'));
+    .pipe(gulp.dest(gulp.paths.src + '/js'));
 });

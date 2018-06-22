@@ -1,0 +1,101 @@
+
+<search-bar-home ng-if="!isMobile"></search-bar-home>
+<div role="main" ng-style="{ 'background-color': custom_defaults.bodyColor || '' }">
+    <div id="content" class="container">
+        <categories-row ng-if="!isMobile"></categories-row>
+        <categories-sidebar ng-if="isMobile"></categories-sidebar>
+        <filters-menu ng-if="isMobile"></filters-menu>
+        <div class="flash-messages"></div>
+        <div class="row datasets-header">
+            <div class="col-lg-offset-1 toolbar">
+                <ol class="breadcrumb" ng-style="{ 'background-color': custom_defaults.bodyColor || '' }">
+                    <li class="breadcrumb-item">
+                        <a ng-href="{{baseHtml5}}">Inicio</a>
+                    </li>
+                    <li class="breadcrumb-item" ng-if="!!activeCategory">
+                        <a ng-href="datasets?categories.slug={{activeCategory| slug}}">{{activeCategory}}</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a ng-href="dataset/{{info.name| slug}}">{{info.name| truncString }}</a>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-md-12 col-lg-10 col-lg-offset-1">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="dataset-item-single" ng-style="{ 'background-color': custom_defaults.datasets.container.backgroundColor || '' }">
+                            <div class="dataset-content clearfix">
+                                <div class="container-resource-categories">
+                                    <dataset-categories ng-if="dataCategories.length > 0" ng-repeat="category in info.categories" info="category.id"></dataset-categories>
+                                </div>
+                                <h3 class="dataset-heading" id="pagingDatasetResult" ng-style="{ 'color': custom_defaults.datasets.container.color || '' }">
+                                    {{info.name}}
+                                </h3>
+
+                                <div class="dataset-description" ng-bind-html="getHtml(info.description)"></div>
+                                <ul class="dataset-single-tags">
+                                    <li ng-repeat="tag in info.tags" style="display:inline" >
+                                        <a class="dataset-single-tags-item label" ng-href="datasets?tags.slug={{tag.name| slug}}">{{tag.name}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="dataset-single-tags-footer">
+                                <ul class="dataset-resources unstyled">
+                                    <li class="pull-right dataset-download-data"><a href="{{url_api + '/datasets/' + info.id + '/download'}}" target="_blank" ng-style="{ 'background-color': custom_defaults.downloads.button.backgroundColor || '', 'color': custom_defaults.downloads.button.color || '' }"><span data-tooltip="Descargar ZIP">Descargar</span></a></li>
+                                    <li class="pull-right dataset-guide-data" ng-if="layout == true"><a ng-href="layout/{{layout_id}}/preview" target="_blank" ng-style="{ 'background-color': custom_defaults.layoutButton.button.backgroundColor || '', 'color': custom_defaults.layoutButton.button.color || '' }">Guía de datos</a></li>
+                                </ul>
+                                <ul class="info-adicional dataset-resources unstyled">
+                                    <li class="dataset-additional-info" ng-click="toggleDropdown($event)" ng-style="{ 'background-color': custom_defaults.additionalInfo.backgroundColor || '' }" ng-if="info.additional_info && info.additional_info.length > 0">Info adicional</li>
+                                    <table class="dataset-additional-info-table dataset-additional-info-table-inactive" ng-if="info.additional_info && info.additional_info.length > 0">
+                                        <thead>
+                                            <tr>
+                                                <th>Campo</th>
+                                                <th>Valor</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="adt_info in info.additional_info">
+                                                <td>{{adt_info.clave}}</td>
+                                                <td>{{adt_info.valor}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <div class="col-lg-10 col-lg-offset-1">
+                <div class="row">
+                    <div class="primary col-lg-12 col-lg-offset-0" ng-class="isMobile ? col-md-12 : col-md-12">
+                        <section class="module">
+                            <div class="module-content">
+
+                                <result-resources ng-if="!showLoading"></result-resources>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-lg-9 col-lg-offset-2 text-center">
+                        <paging page="page" page-size="params.limit" total="countResources"
+                                paging-action="pagingAll('pageClick', page, pageSize, total)"
+                                hide-if-empty="true" show-prev-next="!isMobile" show-first-last="!isMobile"
+                                adjacent="{{!!isMobile ? '1' : '2'}}"
+                                text-title-page="Página {page}"
+                                text-title-first="Primera página"
+                                text-title-last="Última página"
+                                text-title-next="Siguiente"
+                                text-title-prev="Anterior"></paging>
+                    </div>
+                    <div class="primary col-lg-9 col-lg-offset-2" ng-class="isMobile ? col-md-12 : col-md-12">
+                        <section class="module disqus-section">
+                            <dir-disqus config="disqusConfig" disqus-shortname="{{ disqusConfig.disqus_shortname}}" disqus-identifier="{{ disqusConfig.disqus_identifier}}" disqus-url="{{ disqusConfig.disqus_url}}">
+                            </dir-disqus>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

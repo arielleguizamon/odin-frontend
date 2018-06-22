@@ -1,9 +1,13 @@
 var gulp = require('gulp'),
-    templateCache = require('gulp-angular-templatecache');
+    util = require('gulp-util'),
+    htmlmin = require('gulp-htmlmin');
 
-//TODO: disabled until we update project structure
+var src = gulp.paths.src,
+    env = process.env.NODE_ENV || 'dev',
+    dest = (env === 'dev') ? gulp.paths.dev : gulp.paths.prod;
+
 gulp.task('templates', function() {
-  return gulp.src(['views/**/*.html', 'directives/**/*.html'], { base: '.' })
-    .pipe(templateCache({ module: 'odin' }))
-    .pipe(gulp.dest('js'));
+  return gulp.src(gulp.paths.templates, {base: src})
+    .pipe((env === 'dev') ? util.noop() : htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest(dest));
 });

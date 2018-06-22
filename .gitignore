@@ -37,11 +37,12 @@ bower_components
 config.local.json
 
 # Generated files
-js/config.js
-js/templates.js
+src/js/config.js
+src/js/templates.js
 dist/
-js/version.js
-js/customdefaults.js
+src/js/version.js
+src/js/customdefaults.js
+tmp/
 
 # OS X
 .DS_STORE

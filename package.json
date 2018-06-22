@@ -6,8 +6,6 @@
     "connect-logger": "0.0.1",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
-    "gulp-angular-templatecache": "^2.0.0",
-    "gulp-clean-css": "^2.0.12",
     "gulp-concat": "^2.6.0",
     "gulp-cssnano": "^2.1.2",
     "gulp-if": "^2.0.1",
@@ -28,14 +26,33 @@
     "angular-animate": "^1.5.8",
     "angular-media-queries": "^0.6.1",
     "angular-pdf": "^1.3.0",
-    "bower": "^1.7.9",
+    "better-npm-run": "^0.1.0",
+    "bower": "^1.8.4",
     "gulp-debug": "^3.1.0",
+    "gulp-htmlmin": "^4.0.0",
     "slug": "^0.9.1"
   },
   "description": "## Requirements",
   "version": "1.0.0",
   "main": "gulpfile.js",
   "scripts": {
+    "gulp:dev": "better-npm-run build:dev",
+    "gulp:prod": "better-npm-run build:prod",
+    "test": "better-npm-run test"
+  },
+  "betterScripts": {
+    "build:dev": {
+      "command": "gulp",
+      "env": {
+        "NODE_ENV": "dev"
+      }
+    },
+    "build:prod": {
+      "command": "gulp build",
+      "env": {
+        "NODE_ENV": "prod"
+      }
+    },
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

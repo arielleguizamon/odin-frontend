@@ -1,29 +1,40 @@
 var gulp = require('gulp');
+var src = gulp.paths.src;
 
 gulp.task('watch', ['serve'], function() {
   // Static Files
   gulp.watch(gulp.paths.static, ['static-watch']);
 
+  // Templates
+  gulp.watch(gulp.paths.templates, ['templates-watch']);
+
   // Vendors
   gulp.watch([
-    'plugins/**',
-    'index.html'
+    src + '/plugins/**',
+    src + '/index.html'
     ], ['vendors-watch']);
 
-  // Javascript and Templates
+  // Javascript
   gulp.watch([
-    'js/**/*.js',
-    'config.json'
+    src + '/js/**/*.js',
+    'config.json',
+    'config.local.json'
     ], ['javascript-watch']);
 
   // Style
   gulp.watch([
-    'css/**/*.{css,scss}'
+    src + '/css/**/*.{css,scss}'
     ], ['styles']);
 });
 
 // Watch subtasks
 gulp.task('static-watch', ['static'], function (done) {
+  gulp.browserSync.reload();
+  done();
+});
+
+// Watch subtasks
+gulp.task('templates-watch', ['templates'], function (done) {
   gulp.browserSync.reload();
   done();
 });

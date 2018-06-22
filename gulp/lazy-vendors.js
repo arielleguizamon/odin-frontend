@@ -6,30 +6,16 @@ var gulp = require('gulp'),
     util = require('gulp-util'),
     sourcemaps = require('gulp-sourcemaps');
 
+var src = gulp.paths.src,
+    env = process.env.NODE_ENV || 'dev',
+    dest = (env === 'dev') ? gulp.paths.dev : gulp.paths.prod;
+
 gulp.task('lazy-loading', [
-  'lazy-home',
   'lazy-dataset',
   'lazy-dataset-list',
   'lazy-contact',
   'lazy-layout',
-  // 'lazy-dataset-request'
 ]);
-
-gulp.task('lazy-home', function() {
-  return gulp.src([
-      'bower_components/owl.carousel/dist/owl.carousel.min.js',
-      'plugins/ngtweet.min.js',
-    ])
-    .pipe(plumber())
-    .pipe(sourcemaps.init())
-      .pipe(concat('lazy-home.min.js'))
-      .pipe(ngAnnotate({
-        add: true
-      }))
-      .pipe(uglify() )//: util.noop())
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest('dist'));
-});
 
 gulp.task('lazy-contact', function() {
   return gulp.src([
@@ -42,16 +28,13 @@ gulp.task('lazy-contact', function() {
       .pipe(ngAnnotate({
         add: true
       }))
-      .pipe(uglify() )//: util.noop())
+      .pipe((env === 'dev') ? util.noop() : uglify() )//: util.noop())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest(dest));
 });
 
 gulp.task('lazy-layout', function() {
   return gulp.src([
-      // 'plugins/pdf/pdf.js',
-      // 'plugins/pdf/pdf.worker.js',
-      // 'plugins/pdf/pdf.compatibility.js',
       'node_modules/angular-pdf/dist/angular-pdf.min.js'
     ])
     .pipe(plumber())
@@ -60,15 +43,15 @@ gulp.task('lazy-layout', function() {
       .pipe(ngAnnotate({
         add: true
       }))
-      .pipe(uglify() )//: util.noop())
+      .pipe((env === 'dev') ? util.noop() : uglify() )//: util.noop())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest(dest));
 });
 
 gulp.task('lazy-dataset-list', function() {
   return gulp.src([
       // 'plugins/angular-recaptcha.min.js',
-      'plugins/paging/paging.js',
+      src + '/plugins/paging/paging.js',
       'bower_components/angular-read-more/dist/readmore.js',
     ])
     .pipe(plumber())
@@ -77,19 +60,19 @@ gulp.task('lazy-dataset-list', function() {
       .pipe(ngAnnotate({
         add: true
       }))
-      .pipe(uglify() )//: util.noop())
+      .pipe((env === 'dev') ? util.noop() : uglify() )//: util.noop())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest(dest));
 });
 
 gulp.task('lazy-dataset', function() {
   return gulp.src([
       // 'plugins/angular-recaptcha.min.js',
-      'plugins/paging/paging.js',
-      'plugins/leaflet/leaflet-src.js',
-      'plugins/leaflet/angular-leaflet-directive.min.js',
+      src + '/plugins/paging/paging.js',
+      src + '/plugins/leaflet/leaflet-src.js',
+      src + '/plugins/leaflet/angular-leaflet-directive.min.js',
       'bower_components/angular-read-more/dist/readmore.js',
-      'plugins/angular-socialshare.min.js'
+      src + '/plugins/angular-socialshare.min.js'
     ])
     .pipe(plumber())
     .pipe(sourcemaps.init())
@@ -97,7 +80,7 @@ gulp.task('lazy-dataset', function() {
       .pipe(ngAnnotate({
         add: true
       }))
-      .pipe(uglify() )//: util.noop())
+      .pipe((env === 'dev') ? util.noop() : uglify() )//: util.noop())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest(dest));
 });

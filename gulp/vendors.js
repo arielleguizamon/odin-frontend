@@ -4,18 +4,21 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     gulpif = require('gulp-if'),
     uglify = require('gulp-uglify'),
-    cleanCSS = require('gulp-clean-css'),
     util = require('gulp-util'),
     rename = require('gulp-rename'),
     nano = require('gulp-cssnano');
 
+var src = gulp.paths.src,
+    env = process.env.NODE_ENV || 'dev',
+    dest = (env === 'dev') ? gulp.paths.dev : gulp.paths.prod;
+
 gulp.task('vendors', ['base-url'], function() {
-    return gulp.src('dist/index.html')
-    .pipe(useref({ searchPath: '.' },
+    return gulp.src(dest + '/index.html')
+    .pipe(useref({ searchPath: ['.', src] },
       lazypipe().pipe(sourcemaps.init, { loadMaps: true }))
     )
-    .pipe(gulpif('*.js', uglify()))
-    .pipe(gulpif('*.css', nano()))
+    .pipe(gulpif('*.js', (env === 'dev') ? util.noop() : uglify()))
+    .pipe(gulpif('*.css', (env === 'dev') ? util.noop() : nano()))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest(dest));
 });
