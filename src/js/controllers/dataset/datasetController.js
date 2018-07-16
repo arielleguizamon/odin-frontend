@@ -219,7 +219,7 @@ function DatasetController($scope, $location, rest, $rootScope, $sce, $routePara
                                 }
 
                                 var getRandomColor = function (point) {
-                                    var palette = ['#e74c3c', '#3e4f5e', '#19c3e3',
+                                    var palette = ['#19c3e3',
                                                    '#f39c12', '#18b596', '#fdd306', '#f56292', '#3e4f5e',
                                                    '#037dbf', '#88bf48', '#9b59b6', '#fcda59', '#e74c3c',
                                                    '#ffffff', '#19c3e3', '#9b59b6'];
