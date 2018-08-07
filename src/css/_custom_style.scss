@@ -177,8 +177,8 @@ hr{
 }
 
 .category-image svg{
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
 
 }
 
@@ -204,8 +204,8 @@ hr{
 }
 
 .categories-item .category-image{
-  margin-bottom: 0px;
-  margin-top: 5px;
+  margin-bottom: 15px;
+  margin-top: 10px;
 }
 
 .categories-row-container {
@@ -649,11 +649,11 @@ hr{
 }
 
 .dataset-category-icon {
-    width: 40px;
-    height: 40px;
-    display: inline-block;
-    background-size: 100%;
-    margin-right: 0px;
+  width: 25px;
+height: 25px;
+display: inline-block;
+background-size: 100%;
+margin-right: 3px;
 }
 
 .dataset-content{
@@ -829,7 +829,7 @@ li.dataset-view-info.ng-scope.dataset-view-info-active{
 }
 
 .fa-arrow-circle-o-down:before {
-    color:$ba-skyblue;
+    color:rgb(150, 186, 58);
     font-size: 20px;
     margin-right: 10px;
 }
@@ -1066,10 +1066,10 @@ li.dataset-view-info.ng-scope.dataset-view-info-active{
 
 
 .widgets-second-row .popular-datasets-list-item-icon{
-  height: 40px;
+  height: 30px;
   margin-right: 0;
   margin-left: 6px;
-  width: 40px;
+  width: 30px;
   -webkit-filter: none;
      -moz-filter: none;
        -o-filter: none;
@@ -1629,7 +1629,7 @@ ul.unstyled-alt {
   }
 
   .footer-list{
-    position: absolute;
+    // position: absolute;
     top: 5%;
     right: 10%;
   }
@@ -1691,7 +1691,7 @@ ul.unstyled-alt {
   .odin-branding{
     float: left;
     margin: 0;
-    margin-left: 5vw;
+    margin-left: 10vw;
     margin-top: 3.2vh;
   }
 
@@ -1811,7 +1811,7 @@ ul.unstyled-alt {
 
 @media only screen and (min-width : $max-phone-portrait) {
   .ba-logo-mobile{
-    height: 50px;
+    height: 60px;
     width: 200px;
     top: 25px;
   }
