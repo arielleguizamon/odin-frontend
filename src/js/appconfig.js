@@ -38,7 +38,7 @@ $ocLazyLoadProvider.config({
 });
 
 vcRecaptchaServiceProvider.setDefaults({
-   key: '6LcBhAkUAAAAANjrhmqwe62Y61sUKkwYncA-bpaT',
+   key: '6LdUgGsUAAAAAAsW-a2qBvH86_01RWVOA3mR9dnZ',
    theme: 'light'
 });
 
