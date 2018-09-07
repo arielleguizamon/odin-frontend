@@ -326,7 +326,7 @@ function DatasetController($scope, $location, rest, $rootScope, $sce, $routePara
     }
 
     $scope.disqusConfig = {
-        disqus_shortname: '',
+        disqus_shortname: 'odinunlp',
         disqus_identifier: '',//$routeParams.id,
         disqus_url: $location.absUrl()
     };
